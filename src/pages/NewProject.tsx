@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProjects } from '@/contexts/ProjectContext';
@@ -68,7 +67,11 @@ const NewProject = () => {
   
   const onSubmit = (data: FormData) => {
     const newProject = addProject({
-      ...data,
+      title: data.title,
+      description: data.description,
+      status: data.status,
+      githubUrl: data.githubUrl || null,
+      deploymentUrl: data.deploymentUrl || null,
       techStack: techStack,
       startDate: data.startDate ? data.startDate.toISOString() : null,
       targetCompletionDate: data.targetCompletionDate ? data.targetCompletionDate.toISOString() : null,
